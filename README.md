@@ -2,7 +2,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/artemdudkin/promisify-func/badge.svg)](https://coveralls.io/github/artemdudkin/promisify-func) [![Build Status](https://api.travis-ci.org/artemdudkin/promisify-func.svg?branch=master)](https://api.travis-ci.org/artemdudkin/promisify-func.svg?branch=master)
 
-Make function async (i.e. if function returns not Promise then it warps it with Promise; if function throws error then wrap it with Promise.reject).
+Make function async (i.e. if function returns not Promise then it wraps it with Promise; if function throws error then wrap it with Promise.reject).
 
 ## Example
 
