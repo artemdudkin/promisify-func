@@ -22,7 +22,7 @@ const promisify = (func) => {
       if (err) {
         return Promise.reject(err);
       } else {
-        if (typeof res.then != 'function') {
+        if (!res || typeof res.then != 'function') {
           return Promise.resolve( res );
         } else {
           return res;

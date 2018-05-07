@@ -41,6 +41,22 @@ describe('promisify', function(){
         })
     })
 
+    it('should return Promise anyway (undefined -> resolved Promise)', ()=> {
+        const d = promisify(()=>{return undefined});
+
+        return d().then(res => {
+            assert.equal( res, undefined);
+        })
+    })
+
+    it('should return Promise anyway (null -> resolved Promise)', ()=> {
+        const d = promisify(()=>{return null});
+
+        return d().then(res => {
+            assert.equal( res, null);
+        })
+    })
+
     it('should return Promise anyway (Error -> rejected Promise)', ()=> {
         const d = promisify(()=>{
             throw new Error("err");
