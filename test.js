@@ -71,5 +71,39 @@ describe('promisify', function(){
             assert.equal( err, "Error: err");
         })
     })   
-    
+   
+    it('should return Promise anyway (simple value -> resolved Promise)', ()=> {
+        const d = promisify("abc");
+
+        return d().then(res => {
+            assert.equal( res, "abc");
+        })
+    })
+
+    it('should return Promise anyway (simple undefined -> resolved Promise)', ()=> {
+        const d = promisify();
+
+        return d().then(res => {
+            assert.equal( res, undefined);
+        })
+    })
+
+    it('should return Promise anyway (simple null -> resolved Promise)', ()=> {
+        const d = promisify(null);
+
+        return d().then(res => {
+            assert.equal( res, null);
+        })
+    })
+
+    it('should return Promise anyway (simple Error -> resolved Promise)', ()=> {
+        const d = promisify(new Error("err"));
+
+        return d()
+        .then(res => {
+            assert.ok( res instanceof Error, "err should be instance of Error");
+            assert.equal( res, "Error: err");
+        })
+    })   
+
 });

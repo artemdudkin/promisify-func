@@ -7,7 +7,7 @@
  * @returns Promise
  */
 const promisify = (func) => {
-    if (func.promisified) {
+    if (func!=null && func && func.promisified) {
       return func;
     }
   
@@ -15,7 +15,7 @@ const promisify = (func) => {
       let res;
       let err;
       try {
-        res = func.apply(this, rest);
+          res = (typeof func == 'function' ? func.apply(this, rest) : func);
       } catch (e) {
         err = e;
       }
