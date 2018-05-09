@@ -106,4 +106,25 @@ describe('promisify', function(){
         })
     })   
 
+    it('should return Promise anyway (simple resolved Promise -> resolved Promise)', ()=> {
+        const d = promisify(Promise.resolve("abc"));
+
+        return d()
+        .then(res => {
+            assert.equal( res, "abc");
+        })
+    })   
+
+    it('should return Promise anyway (simple rejected Promise -> rejected Promise)', ()=> {
+        const d = promisify(Promise.reject("err"));
+
+        return d()
+        .then(res => {
+            assert.fail("should return rejected Promise");
+        })        
+        .catch(err => {
+            assert.equal( err, "err");
+        })
+    })   
+
 });
